@@ -20,9 +20,9 @@ export type Forecast = {
     };
   };
   chanceOfRain: {
-    t00_06: string;
-    t06_12: string;
-    t12_18: string;
-    t18_24: string;
+    T00_06: string;
+    T06_12: string;
+    T12_18: string;
+    T18_24: string;
   };
 };

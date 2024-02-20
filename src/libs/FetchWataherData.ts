@@ -1,8 +1,7 @@
-export const FetchWeatherData = async () => {
-  const response = await fetch("https://weather.tsukumijima.net/api/forecast/city/200010");
+export const FetchWeatherData = async (id: string) => {
+  const response = await fetch(`https://weather.tsukumijima.net/api/forecast/city/${id}`);
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     return {
       description: data.description.text,
       forecasts: data.forecasts,

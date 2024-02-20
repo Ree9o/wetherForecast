@@ -8,7 +8,7 @@ interface UseWeatherDataReturn {
   error: Error | null;
 }
 
-export function useWeatherData(): UseWeatherDataReturn {
+export function useWeatherData(cityId: string): UseWeatherDataReturn {
   const [weatherData, setWeatherData] = useState<WeatherData>({
     description: "",
     forecasts: [],
@@ -22,8 +22,7 @@ export function useWeatherData(): UseWeatherDataReturn {
   useEffect(() => {
     const initializeWeatherData = async () => {
       try {
-        const data = await FetchWeatherData();
-        console.log(data)
+        const data = await FetchWeatherData(cityId);
         setWeatherData(data);
         setIsLoading(false);
       } catch (error) {
@@ -33,7 +32,7 @@ export function useWeatherData(): UseWeatherDataReturn {
       }
     };
     initializeWeatherData();
-  }, []);
+  }, [cityId]);
 
   return { weatherData, isLoading, error };
 }
